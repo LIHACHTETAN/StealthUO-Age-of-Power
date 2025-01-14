@@ -1,1 +1,1 @@
-# StealthUO-Age-of-Power
+# StealthUO scripts
