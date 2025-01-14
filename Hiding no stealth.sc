@@ -1,4 +1,4 @@
-Program New;
+Program Hiding;
 begin
  while true do 
  begin 
