@@ -2,29 +2,29 @@
 /////////////////////////////Skype LIHACH2003///////////////////////////////////
 /////////////////////////////ICQ 262489116//////////////////////////////////////
 /////////////////////////////email lihachtetan@rambler.ru///////////////////////
-/////////////////////////?1.0 Tinker tool Shard Age of Power////////////////////
+///////////////////////////// 1.1 Carpentry Shard Age of Power//////////////////
 /////////////////////////////The script is written LIHACH///////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-Program Tinker_tool;
+Program Carpentry;
 Var sd,i: Integer;
 Const
-Katana= $1032; //a smoothing plane;
-Logs= $1BD7; //Тип boards;
+Katana= $102C; //a smoothing plane;
+Logs= $1BD7; //РўРёРї boards;
 Begin
  ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////                                                                         
-//                     не трогать....                                       ////
+//                     РЅРµ С‚СЂРѕРіР°С‚СЊ....                                       ////
 SetARStatus(true);                                                          ////
-//Возвращает режим реконнектора: True - реконектор включен, False - выключен////
+//Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂРµР¶РёРј СЂРµРєРѕРЅРЅРµРєС‚РѕСЂР°: True - СЂРµРєРѕРЅРµРєС‚РѕСЂ РІРєР»СЋС‡РµРЅ, False - РІС‹РєР»СЋС‡РµРЅ////
 ////////////////////////////////////////////////////////////////////////////////
-//                     не трогать....                                       ////
+//                     РЅРµ С‚СЂРѕРіР°С‚СЊ....                                       ////
 SetPauseScriptOnDisconnectStatus(true);                                     ////
-//Задает поведение скрипта при дисконнекте. если True то при дисконнекте,   ////
-//все запущенные скрипты встанут на паузу.;                                 ////
+//Р—Р°РґР°РµС‚ РїРѕРІРµРґРµРЅРёРµ СЃРєСЂРёРїС‚Р° РїСЂРё РґРёСЃРєРѕРЅРЅРµРєС‚Рµ. РµСЃР»Рё True С‚Рѕ РїСЂРё РґРёСЃРєРѕРЅРЅРµРєС‚Рµ,   ////
+//РІСЃРµ Р·Р°РїСѓС‰РµРЅРЅС‹Рµ СЃРєСЂРёРїС‚С‹ РІСЃС‚Р°РЅСѓС‚ РЅР° РїР°СѓР·Сѓ.;                                 ////
 ////////////////////////////////////////////////////////////////////////////////
  ///////////////////////////////////////////////////////////////////////////////
  while true do
@@ -32,16 +32,16 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
  wait(3100);
  for i:=1 to 180 do
   begin
-  AddToSystemJournal('30=' + IntToStr(i) + ' >>> При 30 будем кушать... ||');
-    UseObject(Backpack); //Открываем Рюкзак; 
+  AddToSystemJournal('30=' + IntToStr(i) + ' >>> РџСЂРё 30 Р±СѓРґРµРј РєСѓС€Р°С‚СЊ... ||');
+    UseObject(Backpack); //РћС‚РєСЂС‹РІР°РµРј Р СЋРєР·Р°Рє; 
     if Count($1BD7) < 40 then
     begin 
     repeat
-    UseObject(Backpack); //Открываем Рюкзак;   
+    UseObject(Backpack); //РћС‚РєСЂС‹РІР°РµРј Р СЋРєР·Р°Рє;   
     Findtype(Katana,BackPack);
     if Katana = -1 then
      begin
-     AddToSystemJournal('Нет Тинкертул в рюкзаке...' );
+     AddToSystemJournal('РќРµС‚ РўРёРЅРєРµСЂС‚СѓР» РІ СЂСЋРєР·Р°РєРµ...' );
      end;
     Useobject(finditem);
      WaitForTarget(3100);
@@ -52,10 +52,10 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
      begin
      TargetToObject(sd);
      UOSay(Chr(39)+'craftcreate 1' );
-     AddToSystemJournal('Делаем Boards...' );
+     AddToSystemJournal('Р”РµР»Р°РµРј Boards...' );
      WaitMenu ('Making boards', 'Boards');
      wait(50);
-     WaitMenu ('Boards','3');
+     WaitMenu ('Boards','10 Boards');
      end;
      end;
      wait(3100);
@@ -64,7 +64,7 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
      Findtype(Katana,BackPack);
      if Katana = -1 then
      begin
-     AddToSystemJournal('Нет Тинкертул в рюкзаке...' );
+     AddToSystemJournal('РќРµС‚ РўРёРЅРєРµСЂС‚СѓР» РІ СЂСЋРєР·Р°РєРµ...' );
      end;
      Useobject(finditem);
      WaitForTarget(3100);
@@ -77,7 +77,7 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
      if (GetSkillValue('Carpentry')) < 31 then
      begin 
      UOSay(Chr(39)+'craftcreate 0' );
-     AddToSystemJournal('Делаем Box...' );
+     AddToSystemJournal('Р”РµР»Р°РµРј Box...' );
      WaitMenu ('Carpentry', 'Boxes & Furniture');
      wait(50);
      WaitMenu ('Boxes & Furniture','Boxes & Chests'); 
@@ -87,7 +87,7 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
      if ((GetSkillValue('Carpentry')) >= 31) and ((GetSkillValue('Carpentry')) < 47) then
      begin 
      UOSay(Chr(39)+'craftcreate 0' );
-     AddToSystemJournal('Делаем Box...' );
+     AddToSystemJournal('Р”РµР»Р°РµРј Box...' );
      WaitMenu ('Carpentry', 'Boxes & Furniture');
      wait(50);
      WaitMenu ('Boxes & Furniture','Boxes & Chests'); 
@@ -97,7 +97,7 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
      if ((GetSkillValue('Carpentry')) >= 47) and ((GetSkillValue('Carpentry')) < 65) then
      begin 
      UOSay(Chr(39)+'craftcreate 0' );
-     AddToSystemJournal('Делаем Box...' );
+     AddToSystemJournal('Р”РµР»Р°РµРј Box...' );
      WaitMenu ('Carpentry', 'Boxes & Furniture');
      wait(50);
      WaitMenu ('Boxes & Furniture','Boxes & Chests'); 
@@ -107,31 +107,31 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
      if ((GetSkillValue('Carpentry')) >= 65) then
      begin 
      UOSay(Chr(39)+'craftcreate 0' );
-     AddToSystemJournal('Делаем Box...' );
+     AddToSystemJournal('Р”РµР»Р°РµРј Box...' );
      WaitMenu ('Carpentry', 'Boxes & Furniture');
      wait(50);
      WaitMenu ('Boxes & Furniture','Boxes & Chests'); 
      wait(50);
      WaitMenu ('Boxes','(5)');
      end;
-     //задержка на использование;
+     //Р·Р°РґРµСЂР¶РєР° РЅР° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ;
      wait(3100);
      end;
      sd:=Findtype(Logs,BackPack);
      if sd = -1 then
      begin
-     AddToSystemJournal('Зкончилось дерево...' );
+     AddToSystemJournal('Р—РєРѕРЅС‡РёР»РѕСЃСЊ РґРµСЂРµРІРѕ...' );
      end;
      end; 
   end; 
    if FindType($097B, backpack) > 0 THEN
     begin
-    AddToSystemJournal('Кушаем...' );
+    AddToSystemJournal('РљСѓС€Р°РµРј...' );
     UseObject(finditem);
     wait(3000);
     end;
  UOSay(Chr(39)+'Resend' );
- AddToSystemJournal('Ресенд...');
+ AddToSystemJournal('Р РµСЃРµРЅРґ...');
  wait(8200);    
  End;    
 End.
