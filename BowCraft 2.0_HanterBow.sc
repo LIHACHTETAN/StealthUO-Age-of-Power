@@ -12,19 +12,19 @@
 Program BScraft;
 Var sd,i: Integer;
 Const
-Katana= $13B6; //Tип Оружия;
-Logs= $1BE0; //Тип дерева;
+Katana= $13B6; //TРёРї РћСЂСѓР¶РёСЏ;
+Logs= $1BE0; //РўРёРї РґРµСЂРµРІР°;
 Begin
  ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////                                                                         
-//                     не трогать....                                       ////
+//                     РЅРµ С‚СЂРѕРіР°С‚СЊ....                                       ////
 SetARStatus(true);                                                          ////
-//Возвращает режим реконнектора: True - реконектор включен, False - выключен////
+//Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂРµР¶РёРј СЂРµРєРѕРЅРЅРµРєС‚РѕСЂР°: True - СЂРµРєРѕРЅРµРєС‚РѕСЂ РІРєР»СЋС‡РµРЅ, False - РІС‹РєР»СЋС‡РµРЅ////
 ////////////////////////////////////////////////////////////////////////////////
-//                     не трогать....                                       ////
+//                     РЅРµ С‚СЂРѕРіР°С‚СЊ....                                       ////
 SetPauseScriptOnDisconnectStatus(true);                                     ////
-//Задает поведение скрипта при дисконнекте. если True то при дисконнекте,   ////
-//все запущенные скрипты встанут на паузу.;                                 ////
+//Р—Р°РґР°РµС‚ РїРѕРІРµРґРµРЅРёРµ СЃРєСЂРёРїС‚Р° РїСЂРё РґРёСЃРєРѕРЅРЅРµРєС‚Рµ. РµСЃР»Рё True С‚Рѕ РїСЂРё РґРёСЃРєРѕРЅРЅРµРєС‚Рµ,   ////
+//РІСЃРµ Р·Р°РїСѓС‰РµРЅРЅС‹Рµ СЃРєСЂРёРїС‚С‹ РІСЃС‚Р°РЅСѓС‚ РЅР° РїР°СѓР·Сѓ.;                                 ////
 ////////////////////////////////////////////////////////////////////////////////
  ///////////////////////////////////////////////////////////////////////////////
  while true do
@@ -32,12 +32,12 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
  UOSay(Chr(39)+'craftcreate 0' );
  for i:=1 to 30 do
   begin
-  AddToSystemJournal('30=' + IntToStr(i) + ' >>> При 30 будем кушать... ||');
-    UseObject(Backpack); //Открываем Рюкзак;
+  AddToSystemJournal('30=' + IntToStr(i) + ' >>> РџСЂРё 30 Р±СѓРґРµРј РєСѓС€Р°С‚СЊ... ||');
+    UseObject(Backpack); //РћС‚РєСЂС‹РІР°РµРј Р СЋРєР·Р°Рє;
      Findtype(Katana,BackPack);
      if Katana = -1 then
      begin
-     AddToSystemJournal('Нет Катаны в рюкзаке...' );
+     AddToSystemJournal('РќРµС‚ РљР°С‚Р°РЅС‹ РІ СЂСЋРєР·Р°РєРµ...' );
      end;
      Useobject(finditem);
      WaitForTarget(3100);
@@ -46,41 +46,41 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
      sd:=Findtype(Logs,BackPack);
      if sd <> -1 then
      begin 
-     if (GetSkillValue('Bowcraft/Fletghing') >= 55)  then
+     if (GetSkillValue('Bowcraft') >= 55)  then
      begin 
-     AddToSystemJournal('Делаем Newbybow...' );
+     AddToSystemJournal('Р”РµР»Р°РµРј Hunterbow...' );
      TargetToObject(sd);
      WaitMenu ('Bowcraft', 'Bows'); 
      wait(100);
-     WaitMenu ('Bows', 'Hunterbow'); ////подменю количество шафтовж 
-     //задержка на использование; 
+     WaitMenu ('Bows', 'Hunterbow'); ////РїРѕРґРјРµРЅСЋ РєРѕР»РёС‡РµСЃС‚РІРѕ С€Р°С„С‚РѕРІР¶ 
+     //Р·Р°РґРµСЂР¶РєР° РЅР° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ; 
      end;
-     if (GetSkillValue('Bowcraft/Fletghing') < 55) then
+     if (GetSkillValue('Bowcraft') < 55) then
      begin 
-     AddToSystemJournal('Делаем Newbybow...' );
+     AddToSystemJournal('Р”РµР»Р°РµРј Newbybow...' );
      TargetToObject(sd);
      WaitMenu ('Bowcraft', 'Bows'); 
      wait(100);
-     WaitMenu ('Bows', 'Newbybow'); ////подменю количество шафтовж 
-     //задержка на использование; 
+     WaitMenu ('Bows', 'Newbybow'); ////РїРѕРґРјРµРЅСЋ РєРѕР»РёС‡РµСЃС‚РІРѕ С€Р°С„С‚РѕРІР¶ 
+     //Р·Р°РґРµСЂР¶РєР° РЅР° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ; 
      end;
      wait(3100);
      end;
      sd:=Findtype(Logs,BackPack);
      if sd = -1 then
      begin
-     AddToSystemJournal('Зкончилось дерево...' );
+     AddToSystemJournal('Р—РєРѕРЅС‡РёР»РѕСЃСЊ РґРµСЂРµРІРѕ...' );
      end;
      end; 
   end; 
    if FindType($097B, backpack) > 0 THEN
     begin
-    AddToSystemJournal('Кушаем...' );
+    AddToSystemJournal('РљСѓС€Р°РµРј...' );
     UseObject(finditem);
     wait(3000);
     end;
  UOSay(Chr(39)+'Resend' );
- AddToSystemJournal('Ресенд...');
+ AddToSystemJournal('Р РµСЃРµРЅРґ...');
  wait(8000);    
  End;    
 End.
