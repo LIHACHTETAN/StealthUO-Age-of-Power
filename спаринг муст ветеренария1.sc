@@ -176,7 +176,7 @@ UseObject(Backpack); //Открываем Рюкзак;
  end;
  AddToSystemJournal('Кушать будем когда 30=: ' + IntToStr(t));
  UseObject(Backpack); //Открываем Рюкзак;
- wait(7600);
+ wait(100);
  UseObject(BoxBig);
  wait(100);
  MyHits;
@@ -203,6 +203,7 @@ UseObject(Backpack); //Открываем Рюкзак;
     wait(100);
     HitsStamina;
  if AttackID = true then Attack(Horse);
+    wait(8100);
  end;
  end;
  end;
@@ -217,16 +218,16 @@ UseObject(Backpack); //Открываем Рюкзак;
      if FindType(shrink, BoxBig) > 0 THEN
      begin
      UseObject(finditem);
-     wait(3100);
+     wait(100);
      if Hidingself = false then UOSay('all release' );
      end;
     end;
  if FindType($097B, BoxBig) > 0 THEN
     begin
-    wait(8500);
+    wait(100);
     AddToSystemJournal('Кушаем фишстейки!!! 30=:' + IntToStr(t));
     UseObject(finditem);
-    wait(600);
+    wait(3100);
     AddToSystemJournal('||||||||||||||||||||||||');
     end;
  end;
