@@ -2,7 +2,7 @@
 /////////////////////////////Skype LIHACH2003///////////////////////////////////
 /////////////////////////////ICQ 262489116//////////////////////////////////////
 /////////////////////////////email lihachtetan@rambler.ru///////////////////////
-/////////////////////////////1.7 Sparing  Shard Age of Power////////////////////
+/////////////////////////////1.8 Sparing  Shard Age of Power////////////////////
 /////////////////////////////Forged by LIHACH///////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -19,18 +19,16 @@ Program Sparing;
 var Pickaxe, Horse :Cardinal;
     t,MyHP:Integer;
     AttackID, Hidingself:Boolean;
-    skill_use_hileaning: String;
 const
-PackKirka=$0E7D;// Type Сундука ;
-BoxBig= $7163D2C9; // Указываем ID Сундука ;
-Dagger= $0F51; // Тип оружия который будет брать в руки;
-Must= $00C8; // Тип животного с которым стоим в спаринге;
+PackKirka=$0E79;// Type Сундука ;
+BoxBig= $6AC9570E; // Указываем ID Сундука ;
+Dagger= $13B2; // Тип оружия который будет брать в руки;
+Must= $0190; // Тип животного с которым стоим в спаринге;
 healself= 60; //лечит себя если (fullHP - healself)
 shrink= $2121;//Type зашринковоного жывотного.
  Procedure HitsStamina();
    var fh: Integer;
     begin
-  repeat
   FindDistance := 3;
   IF FindType(PackKirka, ground) = 0 THEN
   Begin
@@ -38,7 +36,6 @@ shrink= $2121;//Type зашринковоного жывотного.
   wait(6000)
   end;
   if BoxBig <> finditem then ignore(finditem);
-  until BoxBig = finditem;
   /////////////////////////////////////////////////////////////
      //проверка наличия катаны и щита;
     if Str > 40 then
@@ -158,11 +155,11 @@ end;
 
 
 Begin
-ignore($05D5A356);//вписываете свое ID.
-Hidingself:= true;//true становиться в хайдеслипросто хил нужен живке.
-AttackID:= false;//true атакует,false нет.
+ignore($0886225A);//вписываете свое ID.
+ignore($00DC9C2D);//вписываете свое ID.
+Hidingself:= False;//true становиться в хайдеслипросто хил нужен живке.
+AttackID:= True;//true атакует,false нет.
 UseObject(Backpack); //Открываем Рюкзак;
-skill_use_hileaning:= 'Animal Lore';//Изучение паролельного умения;
  ///////////////////////////////////////////////////////
  wait(100);
  UseObject(BoxBig);
@@ -172,43 +169,38 @@ skill_use_hileaning:= 'Animal Lore';//Изучение паролельного 
  begin
  for t:=1 to 29 do
  begin
+ if Hidingself = false then UOSay('all release' );
  if not Hidden then
  begin
  if Hidingself = true then useskill('Hiding');
  end;
  AddToSystemJournal('Кушать будем когда 30=: ' + IntToStr(t));
  UseObject(Backpack); //Открываем Рюкзак;
- wait(100);
+ wait(7600);
  UseObject(BoxBig);
  wait(100);
  MyHits;
  MyHP:= Maxlife - healself ;
  if Life >= MyHP then
-    begin
+    begin 
+    FindVertical := 15;
     FindDistance := 4;
     Horse:=FindType(Must ,ground);
     if Horse > 0 then
     begin
-    if Hidingself = false then useskill(skill_use_hileaning);
-    wait(3000);
-    if targetpresent then
-    begin
-    WaitForTarget(1000);
-    TargetToObject(Horse);
-    end;
     if FindType($0E21, Backpack) > 0 THEN
         begin
             Pickaxe:=FindType($0E21, Backpack);
             useobject(Pickaxe);
             wait(100);
-            WaitForTarget(1000);
+            WaitForTarget(100);
             AddToSystemJournal('Хиляем Животное');
         end;
     if targetpresent then
     begin
     TargetToObject(Horse);
     end;
-    wait(300);
+    wait(100);
     HitsStamina;
  if AttackID = true then Attack(Horse);
  end;
@@ -237,6 +229,5 @@ skill_use_hileaning:= 'Animal Lore';//Изучение паролельного 
     wait(600);
     AddToSystemJournal('||||||||||||||||||||||||');
     end;
-    if Hidingself = false then UOSay('all release' );
  end;
 End.
