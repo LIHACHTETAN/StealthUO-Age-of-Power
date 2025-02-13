@@ -2,7 +2,7 @@
 /////////////////////////////Skype LIHACH2003///////////////////////////////////
 /////////////////////////////ICQ 262489116//////////////////////////////////////
 /////////////////////////////email lihachtetan@rambler.ru///////////////////////
-////////////////////////////2.0 Bowcraft Shard Age of Power/////////////////////
+////////////////////////////2.1 Bowcraft Shard Age of Power/////////////////////
 /////////////////////////////Forged by LIHACH///////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +46,7 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
      sd:=Findtype(Logs,BackPack);
      if sd <> -1 then
      begin 
-     if (GetSkillValue('Bowcraft') >= 55)  then
+     if (GetSkillValue('Bowcraft') >= 55) and (FindTypeEx($1BE0, $0750, Backpack, False) > 10)  then
      begin 
      AddToSystemJournal('Делаем Hunterbow...' );
      TargetToObject(sd);
@@ -54,9 +54,9 @@ SetPauseScriptOnDisconnectStatus(true);                                     ////
      wait(100);
      WaitMenu ('Bows', 'Hunterbow'); ////подменю количество шафтовж 
      //задержка на использование; 
-     end;
-     if (GetSkillValue('Bowcraft') < 55) then
-     begin 
+     end
+     else
+     begin
      AddToSystemJournal('Делаем Newbybow...' );
      TargetToObject(sd);
      WaitMenu ('Bowcraft', 'Bows'); 
