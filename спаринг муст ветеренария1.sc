@@ -34,10 +34,10 @@ const                                                                         //
   THidingself = False;  //True становиться в Хайд;                            //
   TAttackID = True;     //True атаковать животного;                           //
   //////////////////////////////////////////////////////////////////////////////
-  MoveStartX = 1003;    //координаты возле сундука X;                         //
-  MoveStartY = 2554;    //координаты возле сундука Y                          //
-  MoveFinishX = 1004;   //координаты возле животного X                        //
-  MoveFinishY = 2552;   //координаты возле животного Y                        // 
+  MoveStartX = 1007;    //координаты возле сундука X;                         //
+  MoveStartY = 2550;    //координаты возле сундука Y                          //
+  MoveFinishX = 1005;   //координаты возле животного X                        //
+  MoveFinishY = 2550;   //координаты возле животного Y                        // 
  ///////////////////////////////////////////////////////////////////////////////
   procedure HitsStamina();                                                    //
   begin                                                                       //
@@ -139,7 +139,23 @@ const                                                                         //
 
 
   procedure MyHits();
-  begin
+  begin 
+      if Hidingself = False then
+      begin
+        FindDistance := 5;
+        if FindType(Must, ground) = 0 then
+        begin
+          NewMoveXY(MoveFinishX, MoveFinishY, False, 0, False);
+          HitsStamina;
+          if FindType(shrink, BoxBig) > 0 then
+          begin
+            UseObject(Finditem);
+            wait(3000);
+            if Hidingself = False then
+              UOSay('all release');
+          end;
+        end;
+      end;
     repeat
       if (Life < (MaxLife - healself)) then
       begin
@@ -311,23 +327,14 @@ ignore($00000000);//вписываем своё ID или кого игнори�
           HitsStamina;
         end;
       end;
-
-      if Hidingself = False then
-      begin
-        FindDistance := 5;
-        if FindType(Must, ground) = 0 then
-        begin
-          NewMoveXY(MoveFinishX, MoveFinishY, False, 0, False);
-          HitsStamina;
-          if FindType(shrink, BoxBig) > 0 then
-          begin
-            UseObject(finditem);
-            wait(3000);
-            if Hidingself = False then
-              UOSay('all release');
-          end;
-        end;
-      end;
+    end;
+    if FindType($097B, BoxBig) > 0 THEN
+    begin
+    NewMoveXY(MoveStartX, MoveStartY, False, 0, False);
+    wait(8100);
+    AddToSystemJournal('Кушаем фишстейки!!!');
+    UseObject(finditem);
+    AddToSystemJournal('||||||||||||||||||||||||');
     end;
   end;
 end.
